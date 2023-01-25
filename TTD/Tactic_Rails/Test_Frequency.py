@@ -31,7 +31,8 @@ driver.switch_to.window(handles[1])
 driver.find_element(By.XPATH, '//*[@id="all-1"]/div[1]/div/a').click()
 driver.implicitly_wait(10)
 driver.find_element(By.XPATH, '//*[@id="CampSearchName"]').send_keys("auto")
-campaign = driver.find_element(By.CSS_SELECTOR, "div[class='d-flex align-items-center'] i[class='dripicons-chevron-right']")
+campaign = driver.find_element(By.CSS_SELECTOR,
+                               "div[class='d-flex align-items-center'] i[class='dripicons-chevron-right']")
 campaign.click()
 tactic = driver.find_element(By.XPATH, '//*[@id="reporting_ad_groupiipsgmn"]/tbody/tr/td[1]/div/a')
 tactic.click()
@@ -40,28 +41,30 @@ targeting = driver.find_element(By.XPATH, '//*[@id="AdGrp_TargetOptUpdate"]/span
 targeting.click()
 
 add_button = driver.find_element(By.XPATH, '//*[@id="AddTarget"]')
-search = driver.find_element(By.XPATH,'//*[@id="AddRailTacticDetailsModal"]/div/div/div[2]/div/div[1]/div/div/input')
+search = driver.find_element(By.XPATH, '//*[@id="AddRailTacticDetailsModal"]/div/div/div[2]/div/div[1]/div/div/input')
 
-##------------------------------------------------Creatives-------------------------------------------------------------
+##------------------------------------------------Frequency-----------------------------------------------------------
 
 add_button.click()
-search.send_keys("Creatives")
+search.send_keys("Frequency")
 driver.implicitly_wait(10)
-## click on creative
-driver.find_element(By.XPATH, '//*[@id="AddRailTacticDetailsModal"]/div/div/div[2]/ul[1]/li/div/ul/li/a/span').click()
+driver.find_element(By.XPATH, '//*[@id="AddRailTacticDetailsModal"]/div/div/div[2]/ul[2]/li/div/ul/li[3]/a/span').click()
+time.sleep(3)
+#close targeting modal
+driver.find_element(By.CSS_SELECTOR, "#AddRailTacticDetailsModal > div > div > div.modal-footer > button").click()
 driver.implicitly_wait(10)
-## click on browse button
-driver.find_element(By.XPATH, '//*[@id="UpdateCreativesofAdgroup"]/div/div[1]/div[2]/a').click()
-## search creative name
-driver.find_element(By.XPATH, '//*[@id="SearchCreative"]').send_keys("hosted display 1 nov")
+
+# check mark
+driver.find_element(By.CSS_SELECTOR, "#MaxFrequencyCap").click()
 driver.implicitly_wait(10)
-## check mark on creative
-driver.find_element(By.XPATH, '//*[@id="CreativeModalTable"]/tbody/tr/td[1]/div/input').click()
-
-
-## message
-##toast_message = driver.find_element(By.CLASS_NAME, "toast-message").text
-##print(toast_message)
-
-
+# enter data
+driver.find_element(By.CSS_SELECTOR, "#maximumAdsId").click()
+driver.find_element(By.CSS_SELECTOR, "#maximumAdsId").send_keys(2)
+driver.implicitly_wait(10)
+driver.find_element(By.CSS_SELECTOR, "#maximumAdsPerId").click()
+driver.find_element(By.CSS_SELECTOR, "#maximumAdsPerId").send_keys(1)
+driver.implicitly_wait(10)
+#save
+driver.find_element(By.CSS_SELECTOR, "#AdG_Targeting > div > div.selected_trail.trail_6 > div > div.row.justify-content-end > div:nth-child(2)").click()
+time.sleep(5)
 driver.quit()

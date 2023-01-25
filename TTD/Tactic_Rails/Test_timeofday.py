@@ -51,10 +51,12 @@ driver.implicitly_wait(10)
 driver.find_element(By.XPATH, '//*[@id="AddRailTacticDetailsModal"]/div/div/div[2]/ul[2]/li/div/ul/li[2]/a/span').click()
 driver.implicitly_wait(10)
 driver.find_element(By.CSS_SELECTOR, '#AddRailTacticDetailsModal > div > div > div.modal-footer > button').click()
+time.sleep(3)
 ## Open the modal
 driver.find_element(By.XPATH, "//div[@id='AddTimeoftheDayBtn']//button[@id='AddPrivateContract']").click()
 driver.find_element(By.CSS_SELECTOR, '#AddTimeoftheDayBtn > div > a').click()
 driver.implicitly_wait(10)
+time.sleep(3)
 ## add rail name
 driver.find_element(By.XPATH, '//*[@id="CreateTimeOfTheDay"]/div/div[1]/div/input').send_keys("Time Rail")
 ## select check mark
@@ -65,7 +67,8 @@ driver.find_element(By.XPATH, '//*[@id="CreateTimeOftheDay"]').click()
 driver.implicitly_wait(10)
 driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
 driver.implicitly_wait(10)
-driver.find_element(By.XPATH, "//button[@id='AddTimeofTheDayRails']").click()
+time.sleep(3)
+driver.find_element(By.CSS_SELECTOR, "#AddTimeofTheDayRails").click()
 driver.implicitly_wait(10)
 
 driver.quit()
